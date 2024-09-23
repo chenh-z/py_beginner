@@ -21,3 +21,13 @@ c = a\b
 ```
 
 Latter will have a double type result
+
+
+
+## Question 4
+
+Be care about the order
+
+
+
+And **DO NOT** import extra library
