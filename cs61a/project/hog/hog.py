@@ -236,8 +236,16 @@ def is_always_roll(strategy, goal=GOAL):
     """
     # BEGIN PROBLEM 7
     "*** YOUR CODE HERE ***"
-    opponent_score = 0
-    while
+    score = 0
+    opponet_score = 0
+    pre = strategy(score,opponet_score)
+    while score < goal :
+        while opponet_score < goal :
+            if strategy(score,opponet_score) != pre : return False
+            opponet_score += 1
+        opponet_score = 0
+        score += 1
+    return True
     # END PROBLEM 7
 
 
@@ -254,6 +262,13 @@ def make_averaged(original_function, samples_count=1000):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    def cal(*args) :
+        sum, cnt = 0, 0
+        while cnt < samples_count :
+            sum += original_function(*args)
+            cnt += 1
+        return sum/samples_count
+    return cal
     # END PROBLEM 8
 
 
