@@ -81,6 +81,20 @@ def interleaved_sum(n, odd_func, even_func):
     True
     """
     "*** YOUR CODE HERE ***"
+    def mid(i,flag):
+        if i > n : return 0
+        #if i == 1 : 
+        #    flag = 0
+            #res = odd_func(1)
+        #    return odd_func(1) + mid(i+1,flag)
+        if flag == True : 
+            flag = False
+            return odd_func(i) + mid(i+1,flag)
+        else :
+            flag = True
+            return even_func(i) + mid(i+1,flag)
+    return mid(1,True)
+        
 
 
 def next_larger_coin(coin):
@@ -135,6 +149,14 @@ def count_coins(total):
     True
     """
     "*** YOUR CODE HERE ***"
+    def divide(total, coin):
+        #if coin == False : return 0
+        if total == 0  : return 1
+        if total < 0 : return 0
+        #if coin == False : return 0
+        if next_smaller_coin(coin) == None: return divide(total-coin,coin)
+        else :return divide(total-coin,coin) + divide(total,next_smaller_coin(coin))
+    return divide(total,25)
 
 
 def print_move(origin, destination):
