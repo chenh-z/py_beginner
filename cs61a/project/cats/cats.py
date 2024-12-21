@@ -54,6 +54,13 @@ def about(subject):
     assert all([lower(x) == x for x in subject]), 'subjects should be lowercase.'
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    def input(s):
+    
+        s = split(lower(remove_punctuation(s)))
+        for items in subject:
+            if items in s: return True
+        return False
+    return input
     # END PROBLEM 2
 
 
@@ -82,8 +89,20 @@ def accuracy(typed, source):
     """
     typed_words = split(typed)
     source_words = split(source)
+    type_num = 0
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    i = 0
+    while i < len(typed_words):
+        if i+1 > len(source_words): break
+        if typed_words[i] == source_words[i] : type_num += 1
+        i += 1
+    if len(typed_words) == 0 : 
+        if len(source_words) == 0 : return 100.0
+        else : return 0.0
+    else : return (type_num/len(typed_words))*100
+
+
     # END PROBLEM 3
 
 
@@ -102,6 +121,7 @@ def wpm(typed, elapsed):
     assert elapsed > 0, 'Elapsed time must be positive'
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    return (len(typed)/5/(elapsed/60))
     # END PROBLEM 4
 
 
