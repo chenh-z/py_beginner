@@ -151,6 +151,12 @@ def autocorrect(typed_word, word_list, diff_function, limit):
     """
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    if typed_word in word_list: return typed_word
+    diff = []
+    for word in word_list:
+        diff.append(diff_function(typed_word,word,limit))
+    if min(diff,key = abs) <= limit: return word_list[diff.index(min(diff,key=abs))]
+    else : return typed_word
     # END PROBLEM 5
 
 
@@ -177,7 +183,14 @@ def feline_fixes(typed, source, limit):
     5
     """
     # BEGIN PROBLEM 6
-    assert False, 'Remove this line'
+    #assert False, 'Remove this line'
+    if typed == source : return 0
+    def equal(detect,sample,order):
+        if order >= len(detect) or order >= len(sample) : 
+            return abs(len(detect) - len(sample))
+        if detect[order] != sample[order] : return 1 + equal(detect,sample,order+1)
+        else : return equal(detect,sample,order+1)
+    return equal(typed,source,0)
     # END PROBLEM 6
 
 
