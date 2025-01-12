@@ -21,3 +21,17 @@ To regualte the rule of the min function:
 ```python
 min(list,key=key_you_want)
 ```
+
+
+
+# Problem 6
+
+Notice: Limit
+
+
+
+Just use this to visit string element except the first element:
+
+```python
+vis[1:]
+```
