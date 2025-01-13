@@ -35,3 +35,13 @@ Just use this to visit string element except the first element:
 ```python
 vis[1:]
 ```
+
+
+
+## Problem 7
+
+
+
+Brave enough to use some huge recusive and minimize them 
+
+
