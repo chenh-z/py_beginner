@@ -283,6 +283,17 @@ def report_progress(typed, source, user_id, upload):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    result = 1.0
+    for i in range(len(typed)):
+        if typed[i] != source[i]: 
+            result = i/len(source)
+            #print(result)
+            break
+    if result == 1.0 and len(typed)<len(source):
+        result = len(typed)/len(source)
+        #print(1)
+    upload({'id':user_id,'progress':result})
+    return result
     # END PROBLEM 8
 
 
