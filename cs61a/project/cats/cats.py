@@ -316,6 +316,19 @@ def time_per_word(words, timestamps_per_player):
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
+    #match = []
+    #match.append(words)
+    time = []
+    #cnt = 0
+    for i in range(0,len(timestamps_per_player)):
+        mid =[]
+        for j in range(1,len(timestamps_per_player[i])):
+            mid.append(timestamps_per_player[i][j]-timestamps_per_player[i][j-1])
+            #print(timestamps_per_player[i][j]-timestamps_per_player[i][j-1])
+        time.append(mid)
+        #print(time)
+    #print(words,time)
+    return match(words,time)
     # END PROBLEM 9
 
 
@@ -338,6 +351,15 @@ def fastest_words(match):
     word_indices = range(len(get_all_words(match)))    # contains an *index* for each word
     # BEGIN PROBLEM 10
     "*** YOUR CODE HERE ***"
+    fast = [[] for k in player_indices]
+    #ex_match = match(get_all_words, get_all_times)
+    for j in word_indices:
+        times = [time(match,i,j) for i in player_indices]
+        fast[times.index(min(times))].append(get_word(match,j))
+    return fast
+
+
+            
     # END PROBLEM 10
 
 

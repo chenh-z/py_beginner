@@ -45,3 +45,13 @@ vis[1:]
 Brave enough to use some huge recusive and minimize them 
 
 
+
+## Problem 10
+
+
+
+To create [[]*player_indices]:
+
+
+
+`fast = [[] for k in player_indices]`
