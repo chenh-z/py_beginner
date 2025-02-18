@@ -76,11 +76,13 @@ def planet(mass):
     """Construct a planet of some mass."""
     assert mass > 0
     "*** YOUR CODE HERE ***"
+    return ['planet',mass]
 
 def mass(p):
     """Select the mass of a planet."""
     assert is_planet(p), 'must call mass on a planet'
     "*** YOUR CODE HERE ***"
+    return p[1]
 
 def is_planet(p):
     """Whether p is a planet."""
@@ -133,6 +135,12 @@ def balanced(m):
     True
     """
     "*** YOUR CODE HERE ***"
+    left_len, left_type = m[1][1], m[1][2]
+    right_len, right_type = m[2][1], m[2][2]
+    #print(left_len, left_type,right_len,right_type)
+    if left_len * total_mass(left_type) == right_len * total_mass(right_type) and (is_planet(left_type) or balanced(left_type)) and (is_planet(right_type) or balanced(right_type)) : return True
+    else : return False
+
 
 
 HW_SOURCE_FILE=__file__
