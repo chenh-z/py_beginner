@@ -156,7 +156,16 @@ def max_path_sum(t):
     17
     """
     "*** YOUR CODE HERE ***"
-
+    if is_leaf(t): 
+        return t[0]
+    elif is_leaf(t[1]) and is_leaf(t[2]): 
+        return max(t[0]+t[1][0],t[0]+t[2][0])
+    elif is_leaf(t[1]): 
+        return max(t[0]+t[1][0],t[0]+max_path_sum(t[2]))
+    elif is_leaf(t[2]): 
+        return max(t[0]+max_path_sum(t[1]),t[0]+t[2][0])
+    else: 
+        return max(t[0]+max_path_sum(t[1]),t[0]+max_path_sum(t[2]))
 
 
 # Tree Data Abstraction
