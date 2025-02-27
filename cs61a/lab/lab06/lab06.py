@@ -182,6 +182,7 @@ def make_change(amount, coins):
     >>> make_change(25, coins)
     [2, 2, 4, 4, 5, 8]
     """
+    #print(amount,coins)
     if not coins:
         return None
     smallest = min(coins)
@@ -189,13 +190,24 @@ def make_change(amount, coins):
     if amount < smallest:
         return None
     "*** YOUR CODE HERE ***"
-    ans = []
+    if smallest == amount : return [amount]
+    else :
+        mid = make_change(amount-smallest, rest)
+        if type(mid) == list:
+            #print("mid == list",amount-smallest, rest)
+            #print("return ",[smallest]+mid)
+            return [smallest] + mid
+        else :
+            #print("mid == None",amount-smallest, rest)
+            return make_change(amount, rest)
+            #print("return None")
+    '''
     for x in coins:
         if coins[x] > 0 and amount - x >= 0:
-            print(x,coins[x],amount-x)
-            if amount - x == 0 : return [x]
-            print("recu")
+            #print(x,coins[x],amount-x)
+            #print("recu")
             return [x]+ make_change(amount - x,remove_one(coins,x))
+            '''
 
 def remove_one(coins, coin):
     """Remove one coin from a dictionary of coins. Return a new dictionary,
@@ -291,4 +303,18 @@ class ChangeMachine:
     def change(self, coin):
         """Return change for coin, removing the result from self.coins."""
         "*** YOUR CODE HERE ***"
+        if coin in self.coins:
+            self.coins[coin] += 1
+        else :
+            self.coins[coin] = 1
+        ans = make_change(coin,self.coins)
+        for ele in ans:
+            if ele in self.coins:
+                self.coins[ele] -= 1
+                if self.coins[ele] == 0:
+                    del self.coins[ele]
+        #print(self.coins)
+        return ans
+        #for ele in ans:
+
 
